@@ -1,4 +1,4 @@
-FROM ubuntu as repo
+FROM ubuntu:20.04 as repo
 WORKDIR /hemant
 RUN git clone https://github.com/HEMANT-111/loginwebapp.git
 
