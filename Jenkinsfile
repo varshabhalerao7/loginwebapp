@@ -11,7 +11,7 @@ pipeline {
         stage ("clone-repo") {
             steps {
                 sh "rm -rf /mnt/vsk/*" 
-				sh "git clone https://github.com/HEMANT-111/loginwebapp.git"
+				sh "git clone https://github.com/varshabhalerao7/loginwebapp.git"
             }
            }
            stage ("create-build") {
