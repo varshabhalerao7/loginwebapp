@@ -2,28 +2,41 @@ pipeline {
     agent {
         label{
             label "built-in"
-            customWorkspace "/mnt/hsk"
+            customWorkspace "/mnt/vsk"
             
         }
     }
-    tools {
-        maven "MAVEN_HOME"
-    }
+    
     stages {
-        stage ("clone") {
+        stage ("clone-repo") {
             steps {
-               git credentialsId: 'git', url: 'https://github.com/HEMANT-111/loginwebapp.git'
+                sh "rm -rf /mnt/vsk/*" 
+				sh "git clone https://github.com/HEMANT-111/loginwebapp.git"
             }
            }
-           stage ("build") {
-               steps {
+           stage ("create-build") {
+               steps { 
+                   dir ('/mnt/vsk/loginwebapp') {
                    sh "mvn clean install"
+                   }
                }
            }
-           stage ("deploy") {
-               steps {
-                   sh "cp ./target/*.war /mnt/tom/apache-tomcat-9.0.83/webapps "
+           stage ("chmod") {
+               steps { 
+                   dir ('/mnt/vsk/loginwebapp/target') {
+                   sh "chmod -R 777 LoginWebApp.war"
+                   }
                }
-           }
+             } 
+stage ('copy-container')
+        steps {
+
+     dir ('/mnt/vsk/loginwebapp') {
+         sh "docker build -t myimage-01"
+         sh "docker run --don01 -itdp 708:8080 myimage-01"
+
+           
+        }
     }
+}
 }
