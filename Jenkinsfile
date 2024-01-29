@@ -32,7 +32,7 @@ pipeline {
 stage ('container') {
         steps{
 
-     dir ('/mnt/vsk/loginwebapp') {
+     dir ('/usr/local/tomcat/webapps/LoginWebApp') {
          
          sh "docker build -itd p 8888:8080 --name hskcont"
 
