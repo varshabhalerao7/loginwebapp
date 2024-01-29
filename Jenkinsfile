@@ -33,8 +33,8 @@ stage ('container') {
         steps{
 
      dir ('/mnt/vsk/loginwebapp') {
-         sh "docker build -t myimage-01 ."
-         sh "docker run --don01 -itdp 708:8080 myimage-01"
+         
+         sh "docker build -itd p 8888:8080 --name hskcont"
 
      }
         }
