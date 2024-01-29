@@ -28,6 +28,17 @@ pipeline {
                    }
                }
              } 
+
+	    stage ("copy-loginwebapp") {
+       steps {
+
+         dir ('/mnt/vsk/loginwebapp/target') {
+sh "cp *.war /usr/local/tomcat/webapps"
+		 
+	 }
+	       
+       }
+	    }
 	    
 stage ('container') {
         steps{
