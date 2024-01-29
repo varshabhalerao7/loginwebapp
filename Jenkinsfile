@@ -33,8 +33,9 @@ stage ('container') {
         steps{
 
      dir ('/usr/local/tomcat/webapps/LoginWebApp') {
-         
-         sh "docker build -itdp 8888:8080 --name hskcont"
+         sh "docker build -t hskcont ."
+sh "docker run -itdp 8888:8080 --name  hskcont hskcont "
+        
 
      }
         }
