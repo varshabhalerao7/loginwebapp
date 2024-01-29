@@ -1,9 +1,9 @@
 FROM tomcat:latest   
 RUN apt-get update && apt-get install -y unzip
-COPY LoginWebApp.war /usr/local/tomcat/webapps/LoginWebApp.war
-ENV DB_URL=jdbc:mysql://database-1.cpak8eaoksrp.ap-south-1.rds.amazonaws.com:3306/login
-ENV DB_USERNAME=hemant
-ENV DB_PASSWORD=hemant123456
+COPY /mnt/vsk/loginwebapp/target/*.war /mnt/vsk/loginwebapp
+ENV DB_URL=jdbc:mysql://database-1.clua88iws303.ap-south-1.rds.amazonaws.com:3306/login
+ENV DB_USERNAME=kanu
+ENV DB_PASSWORD=kanu1234567
 RUN mkdir /usr/local/tomcat/webapps/LoginWebApp
 RUN unzip -q /usr/local/tomcat/webapps/LoginWebApp.war -d /usr/local/tomcat/webapps/LoginWebApp
 RUN sed -i 's|jdbc:mysql://localhost:3306/test|'"$DB_URL"'|' /usr/local/tomcat/webapps/LoginWebApp/userRegistration.jsp
