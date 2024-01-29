@@ -28,9 +28,6 @@ pipeline {
                    }
                }
              } 
-stage ('copy to container') {
-	sh "cp /mnt/vsk/loginwebapp/target/*.war /mnt/vsk/loginwebapp"
-}
 	    
 stage ('container') {
         steps{
